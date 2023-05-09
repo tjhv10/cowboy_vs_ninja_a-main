@@ -70,7 +70,58 @@ TEST_CASE("Cowboy vs ninja test")
     CHECK_FALSE(cowboy.isAlive());
     CHECK(ninja.isAlive());
 }
-TEST_CASE("Cowboy vs ninja test")
+TEST_CASE("Team addition check")
 {
-    
+    Point a(1.5,3) ,b(4.75,3),c(2,3);
+    Cowboy cowboy("Jhon",a);
+    TrainedNinja tninja("Peter",b);
+    YoungNinja yninja("baby", c);
+    Team team1(&cowboy);
+    cowboy.hit(110);
+    CHECK_EQ(team1.stillAlive(),0);
+    team1.add(&tninja);
+    team1.add(&yninja);
+    CHECK_EQ(team1.stillAlive(),2);
+}
+TEST_CASE("Team attack check")
+{
+    Point a(1.5,3) ,b(4.75,3),c(2,3),d(1.6,3),e(5,3),f(30,30);
+    Cowboy cowboy1("Jhon",a),cowboy2("kobein",d);
+    OldNinja oninja1("Peter",b),oninja2("oldy",e);
+    YoungNinja yninja1("baby", c),yninja2("jr", f);
+    Team team1(&cowboy1),team2(&cowboy2);
+    team1.add(&oninja1);
+    team1.add(&yninja1);
+    team2.add(&oninja2);
+    team2.add(&yninja2);
+    team1.attack(&team2);//-23 to victim: 87 left
+    CHECK_EQ(team2.stillAlive(),3);
+    team1.attack(&team2);//-36 to victim : 51 left
+    CHECK_EQ(team2.stillAlive(),3);
+    team1.attack(&team2);//-36 to victim : 15 left
+    CHECK_EQ(team2.stillAlive(),3);
+    team1.attack(&team2);//-36 to victim : 0 left
+    CHECK_EQ(team2.stillAlive(),2);
+    team1.attack(&team2);//-23 to victim: 127 left
+    CHECK_EQ(team2.stillAlive(),2);
+    team1.attack(&team2);//-36 to victim: 91 left
+    CHECK_EQ(team2.stillAlive(),2);
+    team1.attack(&team2);//-36 to victim: 55 left
+    CHECK_EQ(team2.stillAlive(),2);
+    team1.attack(&team2);//-36 to victim: 24 left
+    CHECK_EQ(team2.stillAlive(),2);
+    team1.attack(&team2);//-36 to victim: 0 left
+    CHECK_EQ(team2.stillAlive(),1);
+    team1.attack(&team2);//-10 to victim: 90 left
+    CHECK_EQ(team2.stillAlive(),1);
+    team1.attack(&team2);//-10 to victim: 80 left
+    CHECK_EQ(team2.stillAlive(),1);
+    team1.attack(&team2);//-10 to victim: 70 left
+    CHECK_EQ(team2.stillAlive(),1);
+    team1.attack(&team2);//-23 to victim: 47 left
+    CHECK_EQ(team2.stillAlive(),1);
+    team1.attack(&team2);//-23 to victim: 24 left
+    CHECK_EQ(team2.stillAlive(),1);
+    team1.attack(&team2);//-36 to victim: 0 left
+    CHECK_EQ(team2.stillAlive(),0);
 }

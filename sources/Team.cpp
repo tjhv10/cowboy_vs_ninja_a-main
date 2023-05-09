@@ -9,8 +9,8 @@ void Team::add(Character* fighter){
 void Team::attack(Team* enemyTeam){
 
 }
-bool Team::stillAlive() const{
-    return false;
+int Team::stillAlive() const{
+    return 0;
 }
 string Team::print() const{
     return "";

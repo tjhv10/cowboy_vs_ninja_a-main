@@ -7,8 +7,8 @@ void Team2::add(Character* fighter){
 }
 void Team2::attack(Team2 *enemyTeam){
 }
-bool Team2::stillAlive(){
-    return false;
+int Team2::stillAlive(){
+    return 0;
 }
 string Team2::print(){
     return "";

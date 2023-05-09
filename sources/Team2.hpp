@@ -20,7 +20,7 @@ namespace ariel {
             ~Team2()=default;
             void add(Character* character);
             void attack(Team2* enemy);
-            bool stillAlive();
+            int stillAlive();
             std::string print();
 
     };

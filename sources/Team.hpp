@@ -21,7 +21,7 @@ namespace ariel {
             void attack(Team* enemy);
             void add(Character* character);
             std::string print() const;
-            bool stillAlive() const;
+            int stillAlive() const;
     };
 }
 
