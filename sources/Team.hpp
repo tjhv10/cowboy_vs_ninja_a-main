@@ -13,11 +13,14 @@
 namespace ariel {
     class Team{
         private:
-            std::vector<std::unique_ptr<Character>> team; 
-            Character* character_leader;
+            array<Character *, 10> fighters = {nullptr}; 
+            Character* fighters_leader;
+            int ccount = 0,ncount = 0;
         public:
             Team(Character* leader);
             ~Team() = default;
+            bool isNinja(Character *character);
+            bool isCowboy(Character *character);
             void attack(Team* enemy);
             void add(Character* character);
             std::string print() const;
