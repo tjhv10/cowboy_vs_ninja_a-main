@@ -10,15 +10,8 @@ namespace ariel
     {
     private:
     public:
-        YoungNinja(std::string name, Point location);
-        std::string getName() const override;
-        Point getLocation() const override;
-        std::string print() override;
-        void slash(const Character *character) override;
-        void move(const Character *character) override;
-        bool isAlive() const override;
-        double distance(const Character &other) const override;
-        void hit(int hit_points) override;
+        YoungNinja(std::string name, Point& location);
+        YoungNinja(std::string name, Point&& location);
     };
 }
 

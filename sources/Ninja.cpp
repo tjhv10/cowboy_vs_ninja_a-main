@@ -3,30 +3,23 @@
 using namespace ariel;
 using namespace std;
 
-Ninja::Ninja(string name, Point& location,int speed ,int hit_points): Character(name, location, hit_points) , speed(speed){
-    
+Ninja::Ninja(string name, Point& location, int hit_points, int speed): Character(name, location, hit_points) , speed(speed){
 }
-void Ninja::slash(const Character* enemy){
-
+void Ninja::slash(Character* enemy){
+    if(this->distance(*enemy)<=1)
+        if(enemy->isAlive())
+            enemy->hit(13);
 }
 void Ninja::move(const Character* enemy){
-
-}
-bool Ninja::isAlive() const {
-    return Character::isAlive();
-}     
-double Ninja::distance(const Character& other) const {
-    return 0;
-}       
-void Ninja::hit(int hit_points) {
-    
-}
-Point Ninja::getLocation() const {
-    return Point();
-}
-string Ninja::getName() const {
-    return "";
+    if(this->isAlive()&&enemy->isAlive())
+    {
+        Point enemyPos =enemy->getLocation();
+        Point myPos = this->getLocation();
+        Point::moveTowards(myPos,enemyPos, speed);
+        this->setX(myPos.getX());
+        this->setY(myPos.getY());
+    }
 }
 string Ninja::print() {
-    return "";
+    return "Ninja name: " + this->getName()+". Location: " + this->getLocation().print() + ". ";
 }
